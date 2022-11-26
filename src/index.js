@@ -6,4 +6,4 @@ window.onload = () => {
 }
 console.log('Работает');
  
-console.log('не работает');
+
