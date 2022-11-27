@@ -11,12 +11,12 @@ export class Screen {
     }
     //загружаем картинки
     loadImages(imageFiles) {
-      
+
         // для загрузки графики создаем класс loadImages
         const loader = new ImageLoader(imageFiles);// вызов конструктора класса который возвращает объект со свойствами и методами
         loader.load().then((names) => {
             this.images = Object.assign(this.images, loader.images);
-          
+
             this.isImagesLoaded = true;
         });
     }
@@ -42,9 +42,13 @@ export class Screen {
 
     // метод отрисовки картинки
     drawImage(x, y, imageName) {
-       
-        this.context.drawImage(this.images[imageName], x, y);
-        
-    }
 
+        this.context.drawImage(this.images[imageName], x, y);
+
+    }
+    //метод для отображения спрайта
+    drawSprite(sprite) {
+        this.context.drawImage(this.images[sprite.imageName],
+            sprite.sourceX, sprite.sourceY, sprit.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
+    }
 }

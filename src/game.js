@@ -7,7 +7,7 @@ import { ControlState } from "./control-state";
 
 export class Game {
     constructor(width, height) {
-        console.log(width,height)
+       
         //создаем размер экрана
         this.screen = new Screen(width, height);
         //загружаем графику, за нее отвечает класс screen
