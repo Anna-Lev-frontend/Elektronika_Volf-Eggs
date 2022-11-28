@@ -48,6 +48,7 @@ export class Screen {
     }
     //метод для отображения спрайта
     drawSprite(sprite) {
+        console.log(this.images[sprite.imageName],'дура')
         this.context.drawImage(this.images[sprite.imageName],
             sprite.sourceX, sprite.sourceY, sprite.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
     }

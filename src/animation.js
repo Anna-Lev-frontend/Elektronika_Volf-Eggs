@@ -1,13 +1,13 @@
 import { Sprite } from "./sprite";
 
 export class Animation extends Sprite {
-    constructor({ imageName, frames, speed, repeat = true, autorun = true, width = 64, heiht = 64 }) {
+    constructor({ imageName, frames, speed, repeat = true, autorun = true, width = 64, height = 64 }) {
         super({
             imageName: imageName,
             sourceX: frames[0].sx,
             sourceY: frames[0].sy,
-            //width: width
-            //height: height
+            width: width,
+            height: height
         });
         this.frames = frames;
         this.speed = speed;

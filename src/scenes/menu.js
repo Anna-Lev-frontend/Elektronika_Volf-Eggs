@@ -8,13 +8,13 @@ export class Menu extends Scene {
         super.init()
     }
     update(time) {
-        if (this.game.control.fire) {
+        if (this.game.control.start) {
             this.finish(Scene.START_GAME);
         }
     }
     render(time) {
         this.update(time)
-        console.log('здесь работает')
+     
         //отображаем картинку заставку
         this.game.screen.drawImage(0, 0, 'panda');
 
