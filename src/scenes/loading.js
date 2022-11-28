@@ -6,7 +6,9 @@ export class Loading extends Scene {
         this.loadedAt = 0;
     }
     init() {
+        
         super.init();
+        
         this.loadedAt = 0;
     }
 

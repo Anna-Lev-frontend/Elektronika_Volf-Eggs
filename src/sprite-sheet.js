@@ -9,6 +9,7 @@ export class SpriteSheet {
         this.spriteWidth = spriteWidth;
         this.spriteHeight = spriteHeight;
     }
+
     getAnimation(indexes, speed, repeat = true, autorun = true) {
         return new Animation({
             imageName: this.imageName,
@@ -21,7 +22,7 @@ export class SpriteSheet {
 
         });
     }
-
+//метод отпередения по порядковому номера спрайта
     getSprite(index) {
         return new Sprite({
             imageName: this.imageName,
@@ -31,8 +32,7 @@ export class SpriteSheet {
             height: this.spriteHeight
         });
     }
-
-    //создаем методы чтобы находить по ним спрайты по порядковому номеру
+    //создаем метод для определения координат спрайта по его номеру
     //будем считать номер от 1, но внутри метода расчет идут от 0
     getSourceX(index) {
         return (--index * this.spriteWidth) % this.imageWidth;

@@ -14,10 +14,13 @@ export class Menu extends Scene {
     }
     render(time) {
         this.update(time)
+        console.log('здесь работает')
         //отображаем картинку заставку
         this.game.screen.drawImage(0, 0, 'panda');
-        //для позьзователя пишем,чтобы начать игру он должен нажать пробел
+
+        //для пользователя пишем,чтобы начать игру он должен нажать пробел
         this.game.screen.print(250, 500, 'Нажмите пробел');
         super.render(time);
+
     }
 }

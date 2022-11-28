@@ -12,12 +12,34 @@ export class Game {
         this.screen = new Screen(width, height);
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
-            //consoleNew: "img/consoleNew.png",
-            // gorila: './img/mini-gorila.png',
-            // lemur: './img/mini-lemur.png',
             panda: 'img/mini-panda.png',
-           // eagle: './img/mini-eagle.png'
+            account: 'img/account.png',
+            btnRed: 'img/btnRed.png',
+            btnWhite: 'img/btnWhite.png',
+            chick: 'img/chick.png',
+            consoleNew: 'img/consoleNew.png',
+            chickenLeftBottom: 'img/chickenLeftBottom.png',
+            chickenLeftTop: 'img/chickenLeftTop.png',
+            chickenRightBottom: 'img/chickenRightBottom.png',
+            chickenRightTop: 'img/chickenRightTop.png',
+            chickRun: 'img/chickRun.png',
+            egg1: 'img/egg1.png',
+            egg2: 'img/egg2.png',
+            egg3: 'img/egg3.png',
+            egg4: 'img/egg4.png',
+            eggBroken: 'img/eggBroken.png',
+            eggTrush: 'img/eggTrush.png',
+            glass: 'img/glass.png',
+            hare: 'img/hare.png',
+            home: 'img/home.png',
+            stairsLeft: 'img/stairsLeft.png',
+            stairsRight: 'img/stairsRight.png',
+            volfLeftBottom: 'img/volfLeftBottom.png',
+            volfLeftTop: 'img/volfLeftTop.png',
+            volfRightBottom: 'img/volfRightBottom.png',
+            volfRightTop: 'img/volfvolfRightTop.png',   
         });
+        
         this.control = new ControlState();
         this.scenes = {
             loading: new Loading(this),
@@ -26,6 +48,7 @@ export class Game {
         };
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
         this.currentScene.init();
+        
     }
     changeScene(status) {
         switch (status) {

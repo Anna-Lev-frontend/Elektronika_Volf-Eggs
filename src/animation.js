@@ -6,8 +6,8 @@ export class Animation extends Sprite {
             imageName: imageName,
             sourceX: frames[0].sx,
             sourceY: frames[0].sy,
-            width: width,
-            height: this.height
+            //width: width
+            //height: height
         });
         this.frames = frames;
         this.speed = speed;
@@ -25,8 +25,11 @@ export class Animation extends Sprite {
     }
     //добавляем методы для запуска и остановки анимации
     run() {
+        //временно прописыаем if
+        if(!this.running){
         this.setFrame(0);
         this.running = true;
+        }
     }
     stop() {
         this.running = false;
@@ -54,8 +57,8 @@ export class Animation extends Sprite {
         }
         if ((time - this.lastTime) > this.speed) {
             this.nextFrame();
-                this.lastTime += this.speed
-            }
+            this.lastTime = time //временно убираем += this.speed
         }
     }
+}
 

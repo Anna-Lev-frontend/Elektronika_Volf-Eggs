@@ -49,6 +49,6 @@ export class Screen {
     //метод для отображения спрайта
     drawSprite(sprite) {
         this.context.drawImage(this.images[sprite.imageName],
-            sprite.sourceX, sprite.sourceY, sprit.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
+            sprite.sourceX, sprite.sourceY, sprite.width, sprite.height, sprite.x, sprite.y, sprite.width, sprite.height);
     }
 }
