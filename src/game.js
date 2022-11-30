@@ -12,32 +12,18 @@ export class Game {
         this.screen = new Screen(width, height);
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
-            panda: 'img/mini-panda.png',
-            // account: 'img/account.png',
-            // btnRed: 'img/btnRed.png',
-            // btnWhite: 'img/btnWhite.png',
-            // chick: 'img/chick.png',
-            // consoleNew: 'img/consoleNew.png',
-            // chickenLeftBottom: 'img/chickenLeftBottom.png',
-            // chickenLeftTop: 'img/chickenLeftTop.png',
-            // chickenRightBottom: 'img/chickenRightBottom.png',
-            // chickenRightTop: 'img/chickenRightTop.png',
-            // chickRun: 'img/chickRun.png',
-            // egg1: 'img/egg1.png',
-            // egg2: 'img/egg2.png',
-            // egg3: 'img/egg3.png',
-            // egg4: 'img/egg4.png',
-            // eggBroken: 'img/eggBroken.png',
-            // eggTrush: 'img/eggTrush.png',
-            // glass: 'img/glass.png',
-            // hare: 'img/hare.png',
-            // home: 'img/home.png',
+            tiles: 'img/tiles.png',
+            background: 'img/background.jpg',
+            btnRed: 'img/btnRed.png',  
+            btnPink: 'img/btnPink.png',
             stairsLeft: 'img/stairsLeft.png',
-            // stairsRight: 'img/stairsRight.png',
-            volfLeftBottom: 'img/volfLeftBottom.png',
-            // volfLeftTop: 'img/volfLeftTop.png',
-            // volfRightBottom: 'img/volfRightBottom.png',
-            // volfRightTop: 'img/volfvolfRightTop.png',   
+            stairsRight: 'img/stairsRight.png',
+            home: 'img/home.png',
+            chickenLeftTop: 'img/chickenLeftTop.png',
+            chickenLeftBottom: 'img/chickenLeftBottom.png',
+            chickenRightTop: 'img/chickenRightTop.png',
+            chickenRightBottom: 'img/chickenRightBottom.png',
+            glass: 'img/glass.png',
         });
         
         this.control = new ControlState();
@@ -64,7 +50,7 @@ export class Game {
     frame(time) {
         //делаем механизм переключения сцен
         if (this.currentScene.status != Scene.WORKING) {
-            console.log(this.currentScene.status)
+        
             this.currentScene = this.changeScene(this.currentScene.status);
 
             this.currentScene.init();

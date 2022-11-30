@@ -2,7 +2,7 @@ import { Sprite } from "./sprite";
 import { Animation } from "./animation";
 
 export class SpriteSheet {
-    constructor({ imageName, imageWidth, imageHeight, spriteWidth = 64, spriteHeight = 64 }) {
+    constructor({ imageName, imageWidth, imageHeight, spriteWidth = 108, spriteHeight = 108 }) {
         this.imageName = imageName;
         this.imageWidth = imageWidth;
         this.imageHeight = imageHeight;
