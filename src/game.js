@@ -24,6 +24,8 @@ export class Game {
             chickenRightTop: 'img/chickenRightTop.png',
             chickenRightBottom: 'img/chickenRightBottom.png',
             glass: 'img/glass.png',
+            wolf: 'img/wolf.png',
+            //splashScreen:'<iframe src="https://scratch.mit.edu/projects/770020692/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>'
         });
         
         this.control = new ControlState();
