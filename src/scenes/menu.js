@@ -19,7 +19,7 @@ export class Menu extends Scene {
         //this.game.screen.drawImage(0, 0, 'splashScreen'); //НУЖНА ЗАСТАВКА НА ИГРУ
 
         //для пользователя пишем,чтобы начать игру он должен нажать пробел
-        this.game.screen.print(250, 500, 'Нажмите пробел');
+        this.game.screen.print(500, 500, 'Нажмите пробел');
         super.render(time);
 
     }

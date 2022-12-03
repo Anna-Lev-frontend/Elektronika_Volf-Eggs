@@ -13,7 +13,7 @@ export class Game {
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
             tiles: 'img/tiles.png',
-            background: 'img/background.jpg',
+            background: 'img/background.png',
             btnRed: 'img/btnRed.png',  
             btnPink: 'img/btnPink.png',
             stairsLeft: 'img/stairsLeft.png',
@@ -25,6 +25,7 @@ export class Game {
             chickenRightBottom: 'img/chickenRightBottom.png',
             glass: 'img/glass.png',
             wolf: 'img/wolf.png',
+            eggs: 'img/eggs.png'
             //splashScreen:'<iframe src="https://scratch.mit.edu/projects/770020692/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>'
         });
         
@@ -52,14 +53,12 @@ export class Game {
     frame(time) {
         //делаем механизм переключения сцен
         if (this.currentScene.status != Scene.WORKING) {
-        
             this.currentScene = this.changeScene(this.currentScene.status);
-
             this.currentScene.init();
         }
         this.currentScene.render(time);// запускаем текущую сцену
-        requestAnimationFrame(time => this.frame(time));//запихивает анимацию в очередь для отрисовки
-    }
+        requestAnimationFrame(time => this.frame(time));//запихивает анимацию в очередь для отрисовки,бесконечная перерисовка всего сайта, браузер работает 60 кадров в секунду, а 60 кадров на перерисовку это примерно 13 милисекунды (100/60)=1,6, на каждый кадр уходит 1,6 милисекунды
+}
     run() {
         requestAnimationFrame(time => this.frame(time));
     }

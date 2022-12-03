@@ -2,7 +2,7 @@ import { Game } from "./game";
 //запускаем игру после загрузки документа
 window.onload = () => {
     
-    const electronika = new Game(1200, 750);
+    const electronika = new Game(1150, 700);
  
     electronika.run();
 }
