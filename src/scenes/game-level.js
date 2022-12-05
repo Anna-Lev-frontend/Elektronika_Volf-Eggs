@@ -40,7 +40,9 @@ export class GameLevel extends Scene {
         this.game.screen.drawSprite(this.player.view)//добавили персонажа волка
         
         if(this.enemy.view){
-            this.game.screen.drawSprite(this.enemy.view)
+            this.game.screen.drawSprite(this.enemy.view)//появляется яйцо
+            console.log( this.enemy.view)
+            this.enemy.view.run();
         }
         super.render(time);
     }

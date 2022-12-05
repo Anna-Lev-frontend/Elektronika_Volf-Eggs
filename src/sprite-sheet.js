@@ -22,7 +22,7 @@ export class SpriteSheet {
 
         });
     }
-//метод отпередения по порядковому номера спрайта
+//метод опреденения по порядковому номера спрайта
     getSprite(index) {
         return new Sprite({
             imageName: this.imageName,

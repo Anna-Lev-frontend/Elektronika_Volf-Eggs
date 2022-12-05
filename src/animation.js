@@ -22,6 +22,7 @@ export class Animation extends Sprite {
         this.currentFrame = index;
         this.sourceX = this.frames[index].sx;
         this.sourceY = this.frames[index].sy;
+        this.setXY(this.positionMap[index].x, this.positionMap[index].y)
     }
     //добавляем методы для запуска и остановки анимации
     run() {
@@ -59,6 +60,9 @@ export class Animation extends Sprite {
             this.nextFrame();
             this.lastTime = time //временно убираем += this.speed
         }
+    }
+    setPositionMap(map){
+        this.positionMap = map;
     }
 }
 
