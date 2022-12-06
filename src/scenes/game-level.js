@@ -41,7 +41,7 @@ export class GameLevel extends Scene {
         
         if(this.enemy.view){
             this.game.screen.drawSprite(this.enemy.view)//появляется яйцо
-            console.log( this.enemy.view)
+            
             this.enemy.view.run();
         }
         super.render(time);
