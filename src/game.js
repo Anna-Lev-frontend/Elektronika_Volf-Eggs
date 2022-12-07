@@ -7,14 +7,14 @@ import { ControlState } from "./control-state";
 
 export class Game {
     constructor(width, height) {
-       
+
         //создаем размер экрана
         this.screen = new Screen(width, height);
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
             tiles: 'img/tiles.png',
             background: 'img/background.png',
-            btnRed: 'img/btnRed.png',  
+            btnRed: 'img/btnRed.png',
             btnPink: 'img/btnPink.png',
             stairsLeft: 'img/stairsLeft.png',
             stairsRight: 'img/stairsRight.png',
@@ -28,16 +28,17 @@ export class Game {
             eggs: 'img/eggs.png'
             //splashScreen:'<iframe src="https://scratch.mit.edu/projects/770020692/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>'
         });
-        
+
         this.control = new ControlState();
         this.scenes = {
             loading: new Loading(this),
             menu: new Menu(this),
             gameLevel: new GameLevel(this)
         };
+        this.time = 2000;
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
         this.currentScene.init();
-        
+
     }
     changeScene(status) {
         switch (status) {
@@ -45,6 +46,8 @@ export class Game {
                 return this.scenes.menu;
             case Scene.START_GAME:
                 return this.scenes.gameLevel;
+            case Scene.GAME_OVER:
+                return this.scenes.menu;
             default:
                 return this.scenes.menu;
         }
@@ -58,8 +61,12 @@ export class Game {
         }
         this.currentScene.render(time);// запускаем текущую сцену
         requestAnimationFrame(time => this.frame(time));//запихивает анимацию в очередь для отрисовки,бесконечная перерисовка всего сайта, браузер работает 60 кадров в секунду, а 60 кадров на перерисовку это примерно 13 милисекунды (100/60)=1,6, на каждый кадр уходит 1,6 милисекунды
-}
+    }
     run() {
         requestAnimationFrame(time => this.frame(time));
+    }
+    gameEnd(){
+        this.currentScene.finish(Scene.GAME_OVER);
+        this.scenes.gameLevel = new GameLevel(this)
     }
 }

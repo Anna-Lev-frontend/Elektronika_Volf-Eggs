@@ -14,7 +14,7 @@ export class Player {
             'downleft': { view: this.playerSheet.getSprite(1), x: 400, y: 285 },
             'downright': { view: this.playerSheet.getSprite(3), x: 482, y: 280 }
         }
-        this.view = this.positions.downleft.view;
+        this.view = this.positions.downleft.view;// начальная позиция волка
         this.view.setXY(this.positions.downleft.x, this.positions.downleft.y);
 
     }
@@ -35,13 +35,16 @@ export class Player {
     }
 
     walk() {
-        this.view = this.positions[`${this.yPosition + this.xPosition}`].view//создали динамический ключ
-        this.view.setXY(this.positions[`${this.yPosition + this.xPosition}`].x, this.positions[`${this.yPosition + this.xPosition}`].y)
+        this.view = this.positions[this.currentPosition].view//создали динамический ключ
+        this.view.setXY(this.positions[this.currentPosition].x, this.positions[this.currentPosition].y)
     }
     changeOrientationX(orientation) {
-        this.xPosition = orientation;
+        this.xPosition = orientation;//up или down
     }
     changeOrientationY(orientation) {
-        this.yPosition = orientation;
+        this.yPosition = orientation;//right или left
+    }
+    get currentPosition() {//фунция которая делает вид, что она работает как свойство(get это ключевое слово, как let, function)
+        return this.yPosition + this.xPosition;// позиция волка
     }
 }

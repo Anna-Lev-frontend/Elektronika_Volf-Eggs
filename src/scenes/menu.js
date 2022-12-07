@@ -9,7 +9,7 @@ export class Menu extends Scene {
     }
     update(time) {
         if (this.game.control.start) {
-            this.finish(Scene.START_GAME);
+            this.finish(Scene.START_GAME);// заканчивает сцену для меню и начинает игру
         }
     }
     render(time) {

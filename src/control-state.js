@@ -10,6 +10,8 @@ export class ControlState {
         this.keyMap = new Map([
             [37, 'left'], [39, 'right'], [38, 'up'], [40, 'down'], [32, 'start']
         ]);
+        this.btnA = false;
+        this.btnB = false;
         document.addEventListener('keydown', (event) => this.update(event, true));
         document.addEventListener('keyup', (event) => this.update(event, false));
     }
@@ -19,7 +21,6 @@ export class ControlState {
             event.preventDefault();
             event.stopPropagation();
             this[this.keyMap.get(event.keyCode)] = pressed;
-          
         }
     }
 }
