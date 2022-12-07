@@ -11,15 +11,13 @@ export class GameLevel extends Scene {
         this.btnPink = [{ x: 950, y: 70 }, { x: 950, y: 170 }, { x: 950, y: 270 }];
         this.player = new Player(this.game.control);
         this.enemy = new Enemy(this.game.control, this.time);
-        this.countEggs = { positiv: 0, negativ: 0 }// разбитые и не разбитые яйца
+        this.countEggs = { positiv: 0, negativ: 0 }// счетчик на не разбитые и на разбитые яйца
     }
     init() {
         super.init();
     }
     update(time) {
-    
-        if(this.countEggs.negativ === 3){
-            console.log(this.countEggs)
+        if(this.countEggs.negativ === 3){// если будет 3 разбитых яйца 
             this.game.gameEnd();
         }
         this.player.update(time);
@@ -54,10 +52,13 @@ export class GameLevel extends Scene {
 
         if (this.enemy.view) {
             this.game.screen.drawSprite(this.enemy.view)//появляется яйцо
-
             this.enemy.view.run();
         }
-        this.game.screen.print(500, 200, `${this.countEggs.positiv}/${this.countEggs.negativ}`);
+        this.game.screen.print(550, 200, `${this.countEggs.positiv}/${this.countEggs.negativ}`);
         super.render(time);
+        
+        this.game.screen.print(960, 150, 'Игра А');
+        this.game.screen.print(960, 250, 'Игра B');
+        this.game.screen.print(960, 350, 'Меню');
     }
 }

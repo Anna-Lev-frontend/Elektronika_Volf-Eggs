@@ -1,6 +1,5 @@
 export class ControlState {
     constructor() {
-       
         this.up = false;
         this.down = false;
         this.left = false;
@@ -23,4 +22,5 @@ export class ControlState {
             this[this.keyMap.get(event.keyCode)] = pressed;
         }
     }
+    
 }

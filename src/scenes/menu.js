@@ -9,7 +9,7 @@ export class Menu extends Scene {
     }
     update(time) {
         if (this.game.control.start) {
-            this.finish(Scene.START_GAME);// заканчивает сцену для меню и начинает игру
+            this.finish(Scene.START_GAME);// заканчивает сцену для меню и начинаем игру
         }
     }
     render(time) {
@@ -19,7 +19,7 @@ export class Menu extends Scene {
         //this.game.screen.drawImage(0, 0, 'splashScreen'); //НУЖНА ЗАСТАВКА НА ИГРУ
 
         //для пользователя пишем,чтобы начать игру он должен нажать пробел
-        this.game.screen.print(500, 500, 'Нажмите пробел');
+        this.game.screen.print(500, 300, 'Нажмите пробел');
         super.render(time);
 
     }

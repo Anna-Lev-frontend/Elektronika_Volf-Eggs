@@ -6,16 +6,16 @@ export class Enemy {
         this.control = control;
         this.lastTime = 0;
         this.speed = speed;
-        const enemySheet = new SpriteSheet({ imageName: 'eggs', imageWidth: 142, imageHeight: 24, spriteWidth: 50, spriteHeight: 50 });
-        this.view = enemySheet.getAnimation([1, 2, 3], Math.floor(this.speed /3), false, true);
-       
+        const enemySheet = new SpriteSheet({ imageName: 'eggs', imageWidth: 145, imageHeight: 33, spriteWidth: 36, spriteHeight: 36 });
+        this.view = enemySheet.getAnimation([1, 2, 3, 4], Math.floor(this.speed / 4), false, true);
+
         this.positions = {
-            'upleft': [{ x: 330, y: 295 }, { x: 340, y: 305 }, { x: 350, y: 315 }],//1 яйцо
-            'upright': [{ x: 775, y: 285 }, { x: 745, y: 295 }, { x: 715, y: 310 }],
-            'downleft': [{ x: 330, y: 400 }, { x: 340, y: 405 }, { x: 350, y: 415 }],
-            'downright': [{ x: 760, y: 395 }, { x: 730, y: 405 }, { x: 700, y: 420 }]
+            'upleft': [{ x: 340, y: 300 }, { x: 350, y: 310 }, { x: 360, y: 315 }, { x: 380, y: 320 }],//1 яйцо
+            'upright': [{ x: 775, y: 275 }, { x: 745, y: 285 }, { x: 715, y: 300 }, { x: 685, y: 325 }],
+            'downleft': [{ x: 300, y: 370 }, { x: 330, y: 390 }, { x: 350, y: 405 }, { x: 380, y: 420 }],
+            'downright': [{ x: 775, y: 375 }, { x: 745, y: 385 }, { x: 715, y: 405 }, { x: 685, y: 425 }]
         }
-        this.currentPosition = null; //позиция яйца this.key одно и тоже
+        this.currentPosition = null; //это позиция яйца (this.key одно и тоже)
 
     }
     update(time) {// time это время текущей и будущей отрисовки
@@ -30,7 +30,7 @@ export class Enemy {
         this.view.update(time);
     }
     changeDirection() {//функция которая рандомно меняет нашу позицию яйца   
-        this.key = Object.keys(this.positions)[Math.floor(Math.random() * 4)]//вернет один из четырех позиций яйца (переименрвать currentIndex)
+        this.key = Object.keys(this.positions)[Math.floor(Math.random() * 4)]//вернет один из четырех позиций яйца 
 
         //this.view.setXY(this.positions['upleft'][0].x, this.positions['upleft'][0].y)//key
         this.view.setPositionMap(this.positions[this.key])//передаем все позиции текущего яйца
