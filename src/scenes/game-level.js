@@ -17,15 +17,15 @@ export class GameLevel extends Scene {
         super.init();
     }
     update(time) {
-        if(this.countEggs.negativ === 3){// если будет 3 разбитых яйца 
+        if (this.countEggs.negativ === 3) {// если будет 3 разбитых яйца 
             this.game.gameEnd();
         }
         this.player.update(time);
         this.enemy.update(time);
-      
+
         if (this.player.currentPosition === this.enemy.currentPosition) {
             this.countEggs.positiv += 1;
-        } else if (this.player.currentPosition !== this.enemy.currentPosition && this.enemy.currentPosition !== null) {
+        } else if (this.player.currentPosition !== this.enemy.currentPosition && this.enemy.currentPosition) {
             this.countEggs.negativ += 1;
         }
 
@@ -54,11 +54,14 @@ export class GameLevel extends Scene {
             this.game.screen.drawSprite(this.enemy.view)//появляется яйцо
             this.enemy.view.run();
         }
-        this.game.screen.print(550, 200, `${this.countEggs.positiv}/${this.countEggs.negativ}`);
-        super.render(time);
-        
+        this.game.screen.print(550, 200, `${this.countEggs.positiv}/${this.countEggs.negativ}`);//счетчик
+
         this.game.screen.print(960, 150, 'Игра А');
         this.game.screen.print(960, 250, 'Игра B');
         this.game.screen.print(960, 350, 'Меню');
+
+
+        super.render(time);
+
     }
 }

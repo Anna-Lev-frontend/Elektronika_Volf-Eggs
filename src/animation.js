@@ -19,9 +19,11 @@ export class Animation extends Sprite {
     }
     //добавляем метод для установки текущего фрейма
     setFrame(index) {
+
         this.currentFrame = index;
         this.sourceX = this.frames[index].sx;
         this.sourceY = this.frames[index].sy;
+       
         this.setXY(this.positionMap[index].x, this.positionMap[index].y)
     }
     //добавляем методы для запуска и остановки анимации
@@ -36,12 +38,11 @@ export class Animation extends Sprite {
         this.running = false;
     }
     //создаем метод для определения следующего фрейма, он определит конец анимации и запустит сначала или остановит анимацию
+    
     nextFrame() {
+       
         if ((this.currentFrame + 1) == this.totalFrames) {
-            if (this.repeat) {
-                this.setFrame(0);
-                return;
-            }
+          
             this.stop();
             return;
         }
@@ -63,6 +64,7 @@ export class Animation extends Sprite {
     }
     setPositionMap(map){
         this.positionMap = map;
+        this.setXY(this.positionMap[0].x, this.positionMap[0].y)
     }
 }
 

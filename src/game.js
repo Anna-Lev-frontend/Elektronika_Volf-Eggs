@@ -12,7 +12,7 @@ export class Game {
         this.screen = new Screen(width, height);
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
-            //splashScreen: 'img/splashScreen.png'
+            splashScreen: 'img/splashScreen.png',
             tiles: 'img/tiles.png',
             background: 'img/background.png',
             btnRed: 'img/btnRed.png',
@@ -30,7 +30,7 @@ export class Game {
            
         });
 
-        this.control = new ControlState();
+        this.control = new ControlState(this.screen);
         this.scenes = {
             loading: new Loading(this),
             menu: new Menu(this),
@@ -39,6 +39,7 @@ export class Game {
         this.time = 2000;
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
         this.currentScene.init();
+        
 
     }
     changeScene(status) {
@@ -59,8 +60,9 @@ export class Game {
         if (this.currentScene.status != Scene.WORKING) {
             this.currentScene = this.changeScene(this.currentScene.status);
             this.currentScene.init();
-        }
+        } 
         this.currentScene.render(time);// запускаем текущую сцену
+        
         requestAnimationFrame(time => this.frame(time));//запихивает анимацию в очередь для отрисовки,бесконечная перерисовка всего сайта, браузер работает 60 кадров в секунду, а 60 кадров на перерисовку это примерно 13 милисекунды (100/60)=1,6, т.е. на каждый кадр уходит 1,6 милисекунды
     }
     run() {
