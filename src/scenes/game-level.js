@@ -11,7 +11,7 @@ export class GameLevel extends Scene {
         this.btnPink = [{ x: 950, y: 70 }, { x: 950, y: 170 }, { x: 950, y: 270 }];
         this.player = new Player(this.game.control);
         this.enemy = new Enemy(this.game.control, this.time);
-        this.countEggs = { positiv: 0, negativ: 0 }// счетчик на не разбитые и на разбитые яйца
+        this.countEggs = { positiv: 0, negativ: 0 }// счетчик на разбитые и не разбитые яйца
     }
     init() {
         super.init();
@@ -62,6 +62,5 @@ export class GameLevel extends Scene {
 
 
         super.render(time);
-
     }
 }

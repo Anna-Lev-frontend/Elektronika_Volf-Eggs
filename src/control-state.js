@@ -27,7 +27,11 @@ export class ControlState {
         } else if (event instanceof PointerEvent) {//клик мышки это Pointevent
             
             if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 70 && event.offsetY <= 120) {
-                console.log(event,'игра А')
+                console.log(event,'игра А');
+            } else if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 170 && event.offsetY <= 220){
+                console.log(event,'Игра В');
+            } else if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 270 && event.offsetY <= 320) {
+                console.log(event, 'Меню');
             }
         }
 
