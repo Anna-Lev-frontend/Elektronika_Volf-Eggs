@@ -22,11 +22,14 @@ export class Player {
     update(time) {
         if (this.control.up) {
             this.changeOrientationY("up");
-        } else if (this.control.down) {
+        } 
+         if (this.control.down) {
             this.changeOrientationY("down");
-        } else if (this.control.left) {
+        } 
+        if (this.control.left) {
             this.changeOrientationX("left");
-        } else if (this.control.right) {
+        } 
+        if (this.control.right) {
             this.changeOrientationX("right");
         }
         this.walk()

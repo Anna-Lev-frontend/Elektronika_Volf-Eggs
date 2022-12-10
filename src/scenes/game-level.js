@@ -10,11 +10,12 @@ export class GameLevel extends Scene {
         this.btnRed = [{ x: 100, y: 535 }, { x: 935, y: 535 }, { x: 100, y: 415 }, { x: 935, y: 415 }];
         this.btnPink = [{ x: 950, y: 70 }, { x: 950, y: 170 }, { x: 950, y: 270 }];
         this.player = new Player(this.game.control);
-        this.enemy = new Enemy(this.game.control, this.time);
+        this.enemy = new Enemy(this.game.control);
         this.countEggs = { positiv: 0, negativ: 0 }// счетчик на разбитые и не разбитые яйца
+      
     }
     init() {
-        super.init();
+        super.init();// super это класс от которого наследуемся
     }
     update(time) {
         if (this.countEggs.negativ === 3) {// если будет 3 разбитых яйца 
@@ -24,15 +25,21 @@ export class GameLevel extends Scene {
         this.enemy.update(time);
 
         if (this.player.currentPosition === this.enemy.currentPosition) {
-            this.countEggs.positiv += 1;
+            this.countEggs.positiv += 1;// словил яйцо
         } else if (this.player.currentPosition !== this.enemy.currentPosition && this.enemy.currentPosition) {
-            this.countEggs.negativ += 1;
+            this.countEggs.negativ += 1;// не словил яйцо
         }
 
     }
     render(time) {
-        this.update(time);
-        this.game.screen.fill('#FFFF');
+        if (this.game.control.startGame) {// игра не будет запускаться, пока переменная из класса control не будет true
+            this.update(time);
+            super.render(time);
+            
+        }
+
+       
+        this.game.screen.fill('#FFFFFF');
         this.game.screen.drawImage(0, 0, 'background');// добавили розовую консоль
         this.btnRed.forEach((item) => {
             this.game.screen.drawImage(item.x, item.y, 'btnRed');// добавили красные кнопки
@@ -60,7 +67,6 @@ export class GameLevel extends Scene {
         this.game.screen.print(960, 250, 'Игра B');
         this.game.screen.print(960, 350, 'Меню');
 
-
-        super.render(time);
     }
+   
 }

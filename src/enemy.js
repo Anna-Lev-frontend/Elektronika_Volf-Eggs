@@ -2,12 +2,12 @@ import { SpriteSheet } from "./sprite-sheet";
 
 export class Enemy {
 
-    constructor(control, speed = 2000) {
+    constructor(control) {
         this.control = control;
         this.lastTime = 0;
-        this.speed = speed;
+        this.speed = this.control.speedGame;
         this.enemySheet = new SpriteSheet({ imageName: 'eggs', imageWidth: 145, imageHeight: 33, spriteWidth: 36, spriteHeight: 36 });
-        
+
 
         this.positions = {
             'upleft': [{ x: 340, y: 300 }, { x: 350, y: 310 }, { x: 360, y: 315 }, { x: 380, y: 320 }],//1 яйцо
@@ -19,6 +19,11 @@ export class Enemy {
 
     }
     update(time) {// time это время текущей и будущей отрисовки
+        
+        if (this.speed !== this.control.speedGame) {
+            this.speed = this.control.speedGame
+            console.log(this.speed,'speed')
+        }
 
         if ((time - this.lastTime) > this.speed) { //яйцо живет 2 сек
             this.currentPosition = this.key;
@@ -30,7 +35,7 @@ export class Enemy {
         this.view.update(time);
     }
     changeDirection() {//функция которая рандомно меняет нашу позицию яйца   
-        this.view = this.enemySheet.getAnimation([1, 2, 3, 4],this.speed / 4, false, true);
+        this.view = this.enemySheet.getAnimation([1, 2, 3, 4], this.speed / 4, false, true);// + добавить спрайт разбитого яйца 
         this.key = Object.keys(this.positions)[Math.floor(Math.random() * 4)]//вернет один из четырех позиций яйца 
 
         //this.view.setXY(this.positions['upleft'][0].x, this.positions['upleft'][0].y)//key

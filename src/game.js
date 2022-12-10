@@ -30,7 +30,7 @@ export class Game {
            
         });
 
-        this.control = new ControlState(this.screen);
+        this.control = new ControlState(this.screen, this);
         this.scenes = {
             loading: new Loading(this),
             menu: new Menu(this),
@@ -49,7 +49,7 @@ export class Game {
             case Scene.START_GAME:
                 return this.scenes.gameLevel;
             case Scene.GAME_OVER:
-                return this.scenes.menu;
+                return this.scenes.menu;// поменять на statistics
             default:
                 return this.scenes.menu;
         }
@@ -69,7 +69,11 @@ export class Game {
         requestAnimationFrame(time => this.frame(time));
     }
     gameEnd(){
+        this.control.startGame = false;// после окончания игры скидываем все по дефолту
+        this.control.speedGame = 2000;
         this.currentScene.finish(Scene.GAME_OVER);
         this.scenes.gameLevel = new GameLevel(this)
+        // сюда запишем музыку проиграл
+        
     }
 }

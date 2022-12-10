@@ -18,7 +18,7 @@ export class Animation extends Sprite {
         this.totalFrames = this.frames.length;
     }
     //добавляем метод для установки текущего фрейма
-    setFrame(index) {
+    setFrame(index) {// сюда подключаем звук
 
         this.currentFrame = index;
         this.sourceX = this.frames[index].sx;

@@ -14,13 +14,15 @@ export class Menu extends Scene {
     }
     render(time) {
         this.update(time)
-     
+
         //отображаем картинку заставку
+        this.game.screen.fill('#FFFFFF');
         this.game.screen.drawImage(0, 0, 'splashScreen'); //ЗАСТАВКА
 
         //для пользователя пишем,чтобы начать игру он должен нажать пробел
         this.game.screen.print(500, 300, 'Нажмите пробел');
+        this.game.screen.print(150, 50, 'Для перемещения игрока используйте клавиши навигации вверх-вниз-вправо-влево');
+        
         super.render(time);
-
     }
 }
