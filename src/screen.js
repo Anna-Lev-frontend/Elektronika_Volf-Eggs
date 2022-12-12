@@ -5,7 +5,7 @@ export class Screen {
         this.width = width;
         this.heigth = heigth;
         this.canvas = this.createCanvas(width, heigth);
-        this.context = this.canvas.getContext('2d');
+        this.context = this.canvas.getContext('2d');//сохраняем контекс канваса
         this.images = {};
         this.isImagesLoaded = false;
     }
@@ -20,7 +20,7 @@ export class Screen {
         });
     }
 
-    createCanvas(width, height) {
+    createCanvas(width, height) {// создаем канвас
         let elements = document.getElementsByTagName('canvas');
         let canvas = elements[0] || document.createElement('canvas');
         document.body.appendChild(canvas);

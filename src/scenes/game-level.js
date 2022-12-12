@@ -12,13 +12,26 @@ export class GameLevel extends Scene {
         this.player = new Player(this.game.control);
         this.enemy = new Enemy(this.game.control);
         this.countEggs = { positiv: 0, negativ: 0 }// счетчик на разбитые и не разбитые яйца
-      
+
     }
     init() {
         super.init();// super это класс от которого наследуемся
     }
     update(time) {
         if (this.countEggs.negativ === 3) {// если будет 3 разбитых яйца 
+            const userName = localStorage.getItem('name');
+            const result = JSON.parse(localStorage.getItem('result'))//сюда записываем массив с результатами игры
+            const findUser = result.find((item) => {
+                return item.name === userName;
+            })
+            if (!findUser) {// если не нашли пользователя
+                result.push({ name: userName, positiv: this.countEggs.positiv});    
+            } else {//если пользователя нашли
+                
+                findUser.positiv = this.countEggs.positiv;  
+            }
+            localStorage.setItem('result', JSON.stringify(result));
+
             this.game.gameEnd();
         }
         this.player.update(time);
@@ -35,10 +48,10 @@ export class GameLevel extends Scene {
         if (this.game.control.startGame) {// игра не будет запускаться, пока переменная из класса control не будет true
             this.update(time);
             super.render(time);
-            
+
         }
 
-       
+
         this.game.screen.fill('#FFFFFF');
         this.game.screen.drawImage(0, 0, 'background');// добавили розовую консоль
         this.btnRed.forEach((item) => {
@@ -68,5 +81,5 @@ export class GameLevel extends Scene {
         this.game.screen.print(960, 350, 'Меню');
 
     }
-   
+
 }

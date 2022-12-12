@@ -9,14 +9,14 @@ export class Statistics extends Scene {
     }
     update(time) {
         if (this.game.control.resultEnd) {
-            this.finish(Scene.LOADED);// заканчивает сцену для меню и начинаем игру
+            this.finish(Scene.LOADED);// заканчивает сцену игры и начинаем игру
         }
     }
     render(time) {
         this.update(time)
 // буду обращаться к localstorage и забирать результаты и выводить пользователю 
         //отображаем картинку заставку
-        this.game.screen.fill('#FFFFFF');//поменять фон
+        this.game.screen.fill('#FFF');//поменять фон
         //как яйца
 
         super.render(time);

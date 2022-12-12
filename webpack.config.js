@@ -7,12 +7,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/bundle.js',
     },
-    devServer: {
+    devServer: { // webpack-dev-server, чтобы не обновлять постоянно страничку в браузере
         static: "./dist"
     },
 
     devtool: 'inline-source-map',
-    module: {
+    module: {// babel, для совместимости с разными браузерами 
         rules: [
             {
                 test: /\.m?js$/,

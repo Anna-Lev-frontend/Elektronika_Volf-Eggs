@@ -5,7 +5,7 @@ import { GameLevel } from "./scenes/game-level";
 import { Scene } from "./scene";
 import { ControlState } from "./control-state";
 
-export class Game {
+export class Game {// самый главный класс,он управляет всеми компонентами игры (входная точка index.js)
     constructor(width, height) {
 
         //создаем размер экрана

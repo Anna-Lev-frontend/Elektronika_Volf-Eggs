@@ -16,7 +16,7 @@ export class Menu extends Scene {
         this.update(time)
 
         //отображаем картинку заставку
-        this.game.screen.fill('#FFFFFF');
+        this.game.screen.fill('#FFF');
         this.game.screen.drawImage(0, 0, 'splashScreen'); //ЗАСТАВКА
 
         //для пользователя пишем,чтобы начать игру он должен нажать пробел
