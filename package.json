@@ -1,7 +1,7 @@
 {
   "name": "electronika",
   "version": "1.0.0",
-  "description": "Mini ES6 game",
+  "description": "ES6 game Electronika",
   "main": "index.js",
   "scripts": {
     "dist": "webpack",
@@ -25,5 +25,8 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "firebase": "^9.15.0"
   }
 }

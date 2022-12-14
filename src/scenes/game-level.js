@@ -19,13 +19,13 @@ export class GameLevel extends Scene {
     }
     update(time) {
         if (this.countEggs.negativ === 3) {// если будет 3 разбитых яйца 
-            const userName = localStorage.getItem('name');
+            const userName = localStorage.getItem('user');
             const result = JSON.parse(localStorage.getItem('result'))//сюда записываем массив с результатами игры
             const findUser = result.find((item) => {
-                return item.name === userName;
+                return item.name === userName.email;
             })
             if (!findUser) {// если не нашли пользователя
-                result.push({ name: userName, positiv: this.countEggs.positiv});    
+                result.push({ name: userName.email, positiv: this.countEggs.positiv});    
             } else {//если пользователя нашли
                 
                 findUser.positiv = this.countEggs.positiv;  
