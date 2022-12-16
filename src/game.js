@@ -4,6 +4,7 @@ import { Menu } from "./scenes/menu";
 import { GameLevel } from "./scenes/game-level";
 import { Scene } from "./scene";
 import { ControlState } from "./control-state";
+import { GameOver } from "./scenes/game-over";
 
 export class Game {// самый главный класс,он управляет всеми компонентами игры (входная точка index.js)
     constructor(width, height) {
@@ -34,7 +35,8 @@ export class Game {// самый главный класс,он управляе
         this.scenes = {
             loading: new Loading(this),
             menu: new Menu(this),
-            gameLevel: new GameLevel(this)
+            gameLevel: new GameLevel(this),
+            gameOver: new GameOver(this)
         };
         this.time = 2000;
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
@@ -49,7 +51,7 @@ export class Game {// самый главный класс,он управляе
             case Scene.START_GAME:
                 return this.scenes.gameLevel;
             case Scene.GAME_OVER:
-                return this.scenes.menu;// поменять на statistics
+                return this.scenes.gameOver;// поменять на statistics
             default:
                 return this.scenes.menu;
         }

@@ -1,3 +1,5 @@
+import { Statistics } from "./scenes/statistics";
+
 export class ControlState {
     constructor(screen, game) {
         this.screen = screen;
@@ -6,7 +8,7 @@ export class ControlState {
         this.down = false;
         this.left = false;
         this.right = false;
-this.resultEnd = false;
+        this.resultEnd = false;
         this.speedGame = 2000;
         this.start = false; //начало игры(кнопка старт)
         this.startGame = false;
@@ -48,9 +50,9 @@ this.resultEnd = false;
                 }
 
             } else if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 270 && event.offsetY <= 320) {
-
-                this.game.gameEnd();
-                console.log(event, 'Меню');
+                if (pressed) {
+                    const popup = new Statistics()
+                }
             }
             else if (event.offsetX >= 100 && event.offsetX <= 190 && event.offsetY >= 535 && event.offsetY <= 625) {
                 this.down = pressed;
