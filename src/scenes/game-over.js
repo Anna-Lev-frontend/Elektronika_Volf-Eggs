@@ -17,7 +17,7 @@ export class GameOver extends Scene {
         this.update(time)
         this.game.screen.fill('#000000');
         this.game.screen.print(400, 300, 'Чтобы начать игру нажмите пробел');
-        this.game.screen.print(400, 400, this.result)
+        this.game.screen.print(550, 400, this.result)
         super.render(time);
     }
 }

@@ -45,6 +45,8 @@ export class GameLevel extends Scene {
             this.countEggs.positiv += 1;// словил яйцо
         } else if (this.player.currentPosition !== this.enemy.currentPosition && this.enemy.currentPosition) {
             this.countEggs.negativ += 1;// не словил яйцо
+           
+           this.game.screen.playAudio('broken');
         }
 
     }
@@ -52,7 +54,6 @@ export class GameLevel extends Scene {
         if (this.game.control.startGame) {// игра не будет запускаться, пока переменная из класса control не будет true
             this.update(time);
             super.render(time);
-
         }
 
 

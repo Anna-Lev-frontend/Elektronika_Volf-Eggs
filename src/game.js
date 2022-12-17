@@ -11,6 +11,11 @@ export class Game {// самый главный класс,он управляе
 
         //создаем размер экрана
         this.screen = new Screen(width, height);
+
+        this.screen.loadAudios({
+            broken: 'audio/5641492bcc48e95.mp3'
+        })
+
         //загружаем графику, за нее отвечает класс screen
         this.screen.loadImages({
             splashScreen: 'img/splashScreen.png',
