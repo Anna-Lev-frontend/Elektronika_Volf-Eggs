@@ -8,7 +8,6 @@ export class Enemy {
         this.speed = this.control.speedGame;
         this.enemySheet = new SpriteSheet({ imageName: 'eggs', imageWidth: 145, imageHeight: 33, spriteWidth: 36, spriteHeight: 36 });
 
-
         this.positions = {
             'upleft': [{ x: 340, y: 300 }, { x: 350, y: 310 }, { x: 360, y: 315 }, { x: 380, y: 320 }],//1 яйцо
             'upright': [{ x: 775, y: 275 }, { x: 745, y: 285 }, { x: 715, y: 300 }, { x: 685, y: 325 }],
@@ -22,7 +21,6 @@ export class Enemy {
         
         if (this.speed !== this.control.speedGame) {
             this.speed = this.control.speedGame
-            console.log(this.speed,'speed')
         }
 
         if ((time - this.lastTime) > this.speed) { //яйцо живет 2 сек

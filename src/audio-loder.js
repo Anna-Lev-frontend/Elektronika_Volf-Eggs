@@ -10,7 +10,7 @@ export class AudioLoader {
         }
         return Promise.all(promises);
     }
-    //делаем метод для загрузки одной картинки, которая будет возвращать promise
+    //делаем метод для загрузки audio, которая будет возвращать promise
     loadAudio(name, src) {
         return new Promise((resolve) => {
             const audio = new Audio(src);

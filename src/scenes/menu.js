@@ -16,13 +16,14 @@ export class Menu extends Scene {
         this.update(time)
 
         //отображаем картинку заставку
-        this.game.screen.fill('#FFF');
+        this.game.screen.fill('#FFFFFF');
         this.game.screen.drawImage(0, 0, 'splashScreen'); //ЗАСТАВКА
+        this.game.screen.playAudio('start')//музыка для старта игры
 
         //для пользователя пишем,чтобы начать игру он должен нажать пробел
         this.game.screen.print(500, 300, 'Нажмите пробел');
-        this.game.screen.print(200, 50, 'Для перемещения игрока используйте клавиши перемещения курсора');
-        
+        this.game.screen.print(200, 50, 'Для управления игрока используйте клавиши перемещения курсора');
+       
         super.render(time);
     }
 }

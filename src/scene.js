@@ -19,8 +19,8 @@ export class Scene {
     finish(status){// принимает какокй-то аргумент status И перезаписывает status (сцена)
         this.status = status;
     }
+
     //отрисовка сцены
     render(time) {
-
     }
 }

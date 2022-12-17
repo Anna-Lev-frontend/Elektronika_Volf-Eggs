@@ -2,8 +2,6 @@ import { Game } from "./game";// входная точка
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-
-
 //запускаем игру после загрузки документа
 window.onload = () => {
     const firebaseConfig = {//конфигурация firebase
@@ -19,7 +17,6 @@ window.onload = () => {
 
     const autorization = new Autorization(auth);
     autorization.render();
-
 }
 
 class Autorization {
@@ -27,7 +24,6 @@ class Autorization {
         this.auth = auth;
         this.storage = localStorage;
         this._generateTemplateAuthorization();//это приватный метод, т.к. вызывается и работаем с ним только внутри класса(_)
-
     }
     _createInput(labelText, placeholder) {
         const label = document.createElement('label');
@@ -43,9 +39,8 @@ class Autorization {
         btn.classList.add('btnClass');
         btn.addEventListener('click', () => {
             const password = this.inputPassword.lastChild.value;
-            console.log(this.inputPassword.lastChild, 'pass')
+            
             const email = this.inputEmail.lastChild.value;
-            console.log(this.inputEmail.lastChild, 'mail')
             if (type === 'registration') {
                 createUserWithEmailAndPassword(this.auth, email, password) //функция авторизации
                     .then((userCredential) => {
@@ -58,7 +53,6 @@ class Autorization {
                         }
                         const electronika = new Game(1150, 700);
                         electronika.run();// запустили игру
-
                     })
                     .catch((error) => {
                         const errorCode = error.code;
@@ -83,10 +77,7 @@ class Autorization {
                         const errorMessage = error.message;
                         this.template.append(errorMessage);
                     });
-
             }
-
-
         })
         return btn;
     }
@@ -136,7 +127,5 @@ class Autorization {
     }
 
 }
-
-
 console.log('Работает');
 

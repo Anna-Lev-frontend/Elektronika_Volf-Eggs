@@ -33,22 +33,23 @@ export class ControlState {
                 this[this.keyMap.get(event.keyCode)] = pressed;//отвечает по нажатию кнопки навигации
             }
         } else if (event instanceof MouseEvent) {//клик мышки это pointevent, а все остальные действия мышки это mouseevent
-
+            //кнопка А (скорость 2 сек)
             if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 70 && event.offsetY <= 120) {
 
                 if (!this.startGame) {
-                    console.log('speed A')
                     this.startGame = true;
                     this.speedGame = 2000;
+                    this.game.screen.playAudio('chikens');
                 }
 
-
+                //кнопка В (скорость 1,5 сек)
             } else if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 170 && event.offsetY <= 220) {
                 if (!this.startGame) {
                     this.startGame = true;
-                    this.speedGame = 1000;
+                    this.speedGame = 1500;
+                    this.game.screen.playAudio('chikens');
                 }
-
+                //кнопка меню(статистика)
             } else if (event.offsetX >= 950 && event.offsetX <= 1030 && event.offsetY >= 270 && event.offsetY <= 320) {
                 if (pressed) {
                     const popup = new Statistics()

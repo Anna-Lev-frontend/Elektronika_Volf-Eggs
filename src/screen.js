@@ -26,7 +26,6 @@ export class Screen {
     loadAudios(audioFiles) {
         const loader = new AudioLoader(audioFiles);// вызов конструктора класса который возвращает объект со свойствами и методами
         loader.load().then((names) => {
-            console.log(names)
             this.audio = Object.assign(this.audio, loader.audio);
             this.isAudioLoaded = true;
         });
@@ -45,8 +44,8 @@ export class Screen {
         this.context.fillRect(0, 0, this.width, this.heigth);
     }
     print(x, y, text) {
-        this.context.fillStyle = "#f5130f";
-        this.context.font = "22px Georgia";
+        this.context.fillStyle = "#000000";
+        this.context.font = "26px Georgia";
         this.context.fillText(text, x, y);
     }
 
@@ -54,12 +53,17 @@ export class Screen {
     drawImage(x, y, imageName) {
         this.context.drawImage(this.images[imageName], x, y);
     }
+
     playAudio(audioName) {
-        console.log(this.audio,'audio')
         this.audio[audioName].remove();
         document.body.append(this.audio[audioName]);
         this.audio[audioName].play();
     }
+    
+    stopAudio(audioName){
+        this.audio[audioName].remove();
+    }
+
     //метод для отображения спрайта
     drawSprite(sprite) {
         this.context.drawImage(this.images[sprite.imageName],

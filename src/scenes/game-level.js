@@ -12,7 +12,6 @@ export class GameLevel extends Scene {
         this.player = new Player(this.game.control);
         this.enemy = new Enemy(this.game.control);
         this.countEggs = { positiv: 0, negativ: 0 }// счетчик на разбитые и не разбитые яйца
-
     }
     init() {
         super.init();// super это класс от которого наследуемся
@@ -26,16 +25,13 @@ export class GameLevel extends Scene {
             const findUser = result.find((item) => {
                 return item.name === userName;
             })
-            console.log(findUser)
-            if (!findUser) {// если не нашли пользователя
 
+            if (!findUser) {// если не нашли пользователя
                 result.push({ name: userName, positiv: this.countEggs.positiv });
             } else {//если пользователя нашли
-
                 findUser.positiv = this.countEggs.positiv;
             }
             localStorage.setItem('result', JSON.stringify(result));
-
             this.game.gameEnd();
         }
         this.player.update(time);
@@ -43,10 +39,12 @@ export class GameLevel extends Scene {
 
         if (this.player.currentPosition === this.enemy.currentPosition) {
             this.countEggs.positiv += 1;// словил яйцо
+            this.game.screen.playAudio('chikens');
         } else if (this.player.currentPosition !== this.enemy.currentPosition && this.enemy.currentPosition) {
             this.countEggs.negativ += 1;// не словил яйцо
-           
-           this.game.screen.playAudio('broken');
+            this.game.screen.stopAudio('chikens');
+            this.game.screen.playAudio('broken');
+            this.game.screen.playAudio('chikens');
         }
 
     }
@@ -56,8 +54,10 @@ export class GameLevel extends Scene {
             super.render(time);
         }
 
-
         this.game.screen.fill('#FFFFFF');
+        this.game.screen.stopAudio('start');
+        this.game.screen.stopAudio('finish');
+        //this.game.screen.playAudio('chikens');
         this.game.screen.drawImage(0, 0, 'background');// добавили розовую консоль
         this.btnRed.forEach((item) => {
             this.game.screen.drawImage(item.x, item.y, 'btnRed');// добавили красные кнопки
@@ -81,7 +81,7 @@ export class GameLevel extends Scene {
         }
         this.game.screen.print(550, 200, `${this.countEggs.positiv}/${this.countEggs.negativ}`);//счетчик
 
-        this.game.screen.print(960, 150, 'Игра А');
+        this.game.screen.print(960, 150, 'Игра А');//подпись на кнопке
         this.game.screen.print(960, 250, 'Игра B');
         this.game.screen.print(960, 350, 'Меню');
 

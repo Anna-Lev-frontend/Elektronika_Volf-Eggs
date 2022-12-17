@@ -5,17 +5,14 @@ export class Loading extends Scene {
         super(game);
         this.loadedAt = 0;
     }
-    init() {
-        
+    init() {   
         super.init();
-        
         this.loadedAt = 0;
     }
 
     update(time) {
         if (this.loadedAt == 0 && this.game.screen.isImagesLoaded == true) {
             this.loadedAt = time;
-
         }
         if (this.loadedAt != 0 && (time - this.loadedAt) > 500) {
             this.finish(Scene.LOADED);

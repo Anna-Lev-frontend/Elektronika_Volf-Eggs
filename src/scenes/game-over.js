@@ -15,9 +15,13 @@ export class GameOver extends Scene {
     }
     render(time) {
         this.update(time)
-        this.game.screen.fill('#000000');
+        this.game.screen.fill('#87CEEB');
+        this.game.screen.drawImage(0, 30, 'hare');
+        this.game.screen.drawImage(750, 600, 'eggTrush');
         this.game.screen.print(400, 300, 'Чтобы начать игру нажмите пробел');
-        this.game.screen.print(550, 400, this.result)
+        this.game.screen.print(470, 400, `Итого собрано(шт): ${this.result}`);
+        this.game.screen.stopAudio('chikens');
+        this.game.screen.playAudio('finish');//музыка на конец игры
         super.render(time);
     }
 }

@@ -30,10 +30,9 @@ export class Statistics {
                 if (value > 20) {
                     lastSymbol = Number(String(value).slice(1, -1));
                 }
-                console.log(lastSymbol)
                 return prefecs.value.includes(lastSymbol);
             })?.word
         return word ? word : 'яиц'
-        //? вернет underfined если такого ключа не существует, значит вернет яиц
+        //? вернет underfined если такого ключа не существует, значит вернет слово 'яиц'
     }
 }

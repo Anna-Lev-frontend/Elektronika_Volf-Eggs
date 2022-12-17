@@ -13,7 +13,10 @@ export class Game {// самый главный класс,он управляе
         this.screen = new Screen(width, height);
 
         this.screen.loadAudios({
-            broken: 'audio/5641492bcc48e95.mp3'
+            broken: 'audio/broken.mp3',
+            finish: 'audio/nu-pogodi-zastavka.mp3',
+            chikens: 'audio/chikens.mp3',
+            start: 'audio/dzhudzhalyarim.mp3'
         })
 
         //загружаем графику, за нее отвечает класс screen
@@ -32,8 +35,9 @@ export class Game {// самый главный класс,он управляе
             chickenRightBottom: 'img/chickenRightBottom.png',
             glass: 'img/glass.png',
             wolf: 'img/wolf.png',
-            eggs: 'img/eggs.png'
-           
+            eggs: 'img/eggs.png',
+            hare: 'img/hare.png',
+            eggTrush: 'img/eggTrush.png'
         });
 
         this.control = new ControlState(this.screen, this);
@@ -46,17 +50,15 @@ export class Game {// самый главный класс,он управляе
         this.time = 2000;
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
         this.currentScene.init();
-        
-
     }
     changeScene(status) {
         switch (status) {
             case Scene.LOADED:
                 return this.scenes.menu;
-            case Scene.START_GAME:
+            case Scene.START_GAME: 
                 return this.scenes.gameLevel;
             case Scene.GAME_OVER:
-                return this.scenes.gameOver;// поменять на statistics
+                return this.scenes.gameOver;
             default:
                 return this.scenes.menu;
         }
