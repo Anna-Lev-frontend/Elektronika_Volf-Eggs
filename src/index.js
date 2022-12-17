@@ -27,8 +27,10 @@ class Autorization {
     }
     _createInput(labelText, placeholder) {
         const label = document.createElement('label');
+        label.classList.add('label')
         label.innerText = labelText;
         const input = document.createElement('input');
+        input.classList.add('input')
         input.placeholder = placeholder;
         label.append(input);
         return label;
