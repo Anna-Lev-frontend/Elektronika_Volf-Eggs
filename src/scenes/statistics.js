@@ -9,6 +9,16 @@ export class Statistics {
 
         const popup = document.createElement('section');
         popup.classList.add('popup');
+
+        const divBtnClose = document.createElement('div');
+        divBtnClose.classList.add('popup-close')
+        const btnClose = document.createElement('button');
+        btnClose.classList.add('popup-close-content');
+        btnClose.innerText = 'X';
+        divBtnClose.append(btnClose);
+
+        const divOl = document.createElement('div');
+        divOl.classList.add('popup-content');
         const ol = document.createElement('ol');
         ol.classList.add('ol');
 
@@ -16,10 +26,12 @@ export class Statistics {
         resultGame.forEach((item) => {
             const li = document.createElement('li')
             li.classList.add('li');
-            li.innerText = `${item.name} / ${item.positiv} ${this.getEggPrefecs(item.positiv)}`//position:absolut ,
+            li.innerText = `${item.name} / ${item.positiv} ${this.getEggPrefecs(item.positiv)}`
             ol.append(li);
         })
-        popup.append(ol);
+        divOl.append(ol);
+
+        popup.append(divBtnClose, divOl);
         document.body.append(popup);
     }
     getEggPrefecs(value) {

@@ -41,12 +41,11 @@ class Autorization {
         btn.classList.add('btnClass');
         btn.addEventListener('click', () => {
             const password = this.inputPassword.lastChild.value;
-            
+
             const email = this.inputEmail.lastChild.value;
             if (type === 'registration') {
                 createUserWithEmailAndPassword(this.auth, email, password) //функция авторизации
                     .then((userCredential) => {
-
                         const user = userCredential.user;
                         this.template.remove();
                         this.storage.setItem('user', JSON.stringify(user));
@@ -59,7 +58,10 @@ class Autorization {
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
-                        this.template.append(errorMessage);//выводим на страницу нашу ошибку если она есть
+                        const divError = document.createElement('div')
+                        divError.classList.add('content-error');
+                        divError.append(errorCode,errorMessage)
+                        this.template.append(divError);//выводим на страницу нашу ошибку если она есть
                     });
             } else {
                 signInWithEmailAndPassword(this.auth, email, password)
@@ -88,10 +90,15 @@ class Autorization {
         section.classList.add('authorization');
         this.inputEmail = this._createInput('email', 'введите email')
         this.inputPassword = this._createInput('password', 'введите password');
+
+        const div = document.createElement('div');
+        div.classList.add('divBtn');
+
         const btnAuthorization = this._createBtn('Ввойти', 'btn-auth', 'authorization');
 
         const btnRegistration = this._createBtn('Зарегистророваться', 'btn-regisrt', 'registration');
-        section.append(this.inputEmail, this.inputPassword, btnAuthorization, btnRegistration);
+        div.append(btnAuthorization, btnRegistration);
+        section.append(this.inputEmail, this.inputPassword, div);
         this.template = section;
     }
 
