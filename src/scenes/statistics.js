@@ -15,7 +15,9 @@ export class Statistics {
         const btnClose = document.createElement('button');
         btnClose.classList.add('popup-close-content');
         btnClose.innerText = 'X';
-
+        btnClose.addEventListener('click', () => {
+            popup.remove();
+        })
         const divOl = document.createElement('div');
         divOl.classList.add('popup-content');
         const ol = document.createElement('ol');
