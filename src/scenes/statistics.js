@@ -10,12 +10,11 @@ export class Statistics {
         const popup = document.createElement('section');
         popup.classList.add('popup');
 
-        const divBtnClose = document.createElement('div');
-        divBtnClose.classList.add('popup-close')
+        // const divBtnClose = document.createElement('div');
+        // divBtnClose.classList.add('popup-close')
         const btnClose = document.createElement('button');
         btnClose.classList.add('popup-close-content');
         btnClose.innerText = 'X';
-        divBtnClose.append(btnClose);
 
         const divOl = document.createElement('div');
         divOl.classList.add('popup-content');
@@ -29,9 +28,8 @@ export class Statistics {
             li.innerText = `${item.name} / ${item.positiv} ${this.getEggPrefecs(item.positiv)}`
             ol.append(li);
         })
-        divOl.append(ol);
-
-        popup.append(divBtnClose, divOl);
+        divOl.append(btnClose, ol);
+        popup.append(divOl);
         document.body.append(popup);
     }
     getEggPrefecs(value) {

@@ -60,7 +60,7 @@ class Autorization {
                         const errorMessage = error.message;
                         const divError = document.createElement('div')
                         divError.classList.add('content-error');
-                        divError.append(errorCode,errorMessage)
+                        divError.append(errorCode)
                         this.template.append(divError);//выводим на страницу нашу ошибку если она есть
                     });
             } else {
@@ -79,7 +79,11 @@ class Autorization {
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
-                        this.template.append(errorMessage);
+                        const divError = document.createElement('div')
+                        divError.classList.add('content-error');
+                        divError.append(errorMessage)
+                        this.template.append(divError);
+                        //this.template.append(errorMessage);
                     });
             }
         })
@@ -89,12 +93,12 @@ class Autorization {
         const section = document.createElement('section');
         section.classList.add('authorization');
         this.inputEmail = this._createInput('email', 'введите email')
-        this.inputPassword = this._createInput('password', 'введите password');
+        this.inputPassword = this._createInput('password', 'введите пароль');
 
         const div = document.createElement('div');
         div.classList.add('divBtn');
 
-        const btnAuthorization = this._createBtn('Ввойти', 'btn-auth', 'authorization');
+        const btnAuthorization = this._createBtn('Войти', 'btn-auth', 'authorization');
 
         const btnRegistration = this._createBtn('Зарегистророваться', 'btn-regisrt', 'registration');
         div.append(btnAuthorization, btnRegistration);
