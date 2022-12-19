@@ -10,8 +10,6 @@ export class Statistics {
         const popup = document.createElement('section');
         popup.classList.add('popup');
 
-        // const divBtnClose = document.createElement('div');
-        // divBtnClose.classList.add('popup-close')
         const btnClose = document.createElement('button');
         btnClose.classList.add('popup-close-content');
         btnClose.innerText = 'X';
