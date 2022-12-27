@@ -1,4 +1,6 @@
 const path = require('path');
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: "development",
@@ -10,7 +12,14 @@ module.exports = {
     devServer: { // webpack-dev-server, чтобы не обновлять постоянно страничку в браузере
         static: "./dist"
     },
-
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                { from: "audio", to: "audio" },
+                { from: "img", to: "img" },
+            ],
+        }), new HtmlWebpackPlugin()
+    ],
     devtool: 'inline-source-map',
     module: {// babel, для совместимости с разными браузерами 
         rules: [
