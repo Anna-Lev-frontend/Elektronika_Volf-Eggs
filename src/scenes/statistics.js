@@ -21,7 +21,7 @@ export class Statistics {
         const ol = document.createElement('ol');
         ol.classList.add('ol');
 
-        const resultGame = JSON.parse(localStorage.getItem('result'));
+        const resultGame = JSON.parse(localStorage.getItem('result'));//записывает результат игры через localstorage.getItem и через json pasrin в объект
         resultGame.forEach((item) => {
             const li = document.createElement('li')
             li.classList.add('li');
@@ -32,6 +32,7 @@ export class Statistics {
         popup.append(divOl);
         document.body.append(popup);
     }
+    // запись результата для статистики
     getEggPrefecs(value) {
         const eggsPrefecs = [{ value: [1], word: 'яйцо' }, { value: [2, 3, 4], word: 'яйца' }];
         const word = eggsPrefecs

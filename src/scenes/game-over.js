@@ -1,5 +1,5 @@
 import { Scene } from "../scene";
-
+// это конец игры
 export class GameOver extends Scene {
     constructor(game) {
         super(game);

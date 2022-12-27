@@ -19,7 +19,7 @@ export class Player {
 
     }
 
-    update(time) {
+    update(time) {// метод обновления
         if (this.control.up) {
             this.changeOrientationY("up");
         } 
@@ -37,7 +37,7 @@ export class Player {
         // this.update(time);
     }
 
-    walk() {
+    walk() {  // метод управления волком, устанавливаем позицию уснатовки героя
         this.view = this.positions[this.currentPosition].view//создали динамический ключ
         this.view.setXY(this.positions[this.currentPosition].x, this.positions[this.currentPosition].y)
     }

@@ -39,8 +39,9 @@ export class Game {// самый главный класс,он управляе
             hare: 'img/hare.png',
             eggTrush: 'img/eggTrush.png'
         });
-
+// этот класс управляет всеми эвентами, кнопками, стрелки и т.д.
         this.control = new ControlState(this.screen, this);
+        //создаем объект со сценами
         this.scenes = {
             loading: new Loading(this),
             menu: new Menu(this),
@@ -51,7 +52,7 @@ export class Game {// самый главный класс,он управляе
         this.currentScene = this.scenes.loading;// добавили нашу сцену в контейнер сцен game,сделали loading текущей сценой, т.к. это первая сцена
         this.currentScene.init();
     }
-    changeScene(status) {
+    changeScene(status) {// выбор сцены
         switch (status) {
             case Scene.LOADED:
                 return this.scenes.menu;
@@ -63,7 +64,7 @@ export class Game {// самый главный класс,он управляе
                 return this.scenes.menu;
         }
     }
-
+//time это время, момент когда произошла отрисовка
     frame(time) {
         //делаем механизм переключения сцен
         if (this.currentScene.status != Scene.WORKING) {
@@ -74,7 +75,7 @@ export class Game {// самый главный класс,он управляе
         
         requestAnimationFrame(time => this.frame(time));//запихивает анимацию в очередь для отрисовки,бесконечная перерисовка всего сайта, браузер работает 60 кадров в секунду, а 60 кадров на перерисовку это примерно 13 милисекунды (100/60)=1,6, т.е. на каждый кадр уходит 1,6 милисекунды
     }
-    run() {
+    run() {// этот метод при отрисовке все меняет 
         requestAnimationFrame(time => this.frame(time));
     }
     gameEnd(){
@@ -82,7 +83,7 @@ export class Game {// самый главный класс,он управляе
         this.control.speedGame = 2000;
         this.currentScene.finish(Scene.GAME_OVER);
         this.scenes.gameLevel = new GameLevel(this)
-        // сюда запишем музыку проиграл
+        
         
     }
 }

@@ -4,19 +4,19 @@ import { Sprite } from "../sprite";
 import { Player } from "../player";
 import { Enemy } from "../enemy";
 
-export class GameLevel extends Scene {
+export class GameLevel extends Scene {// наследуемся от класса scene и создаем новы класс gamelavel
     constructor(game) {
         super(game);
         this.btnRed = [{ x: 100, y: 535 }, { x: 935, y: 535 }, { x: 100, y: 415 }, { x: 935, y: 415 }];
         this.btnPink = [{ x: 950, y: 70 }, { x: 950, y: 170 }, { x: 950, y: 270 }];
-        this.player = new Player(this.game.control);
+        this.player = new Player(this.game.control);//инстант класса player
         this.enemy = new Enemy(this.game.control);
         this.countEggs = { positiv: 0, negativ: 0 }// счетчик на разбитые и не разбитые яйца
     }
-    init() {
+    init() {// init это метод инициализации (включение, старт)
         super.init();// super это класс от которого наследуемся
     }
-    update(time) {
+    update(time) {//update (обновляет) перерисовку
         if (this.countEggs.negativ === 3) {// если будет 3 разбитых яйца 
             this.game.scenes.gameOver.result = this.countEggs.positiv;
             const userName = JSON.parse(localStorage.getItem('user')).email;
@@ -48,7 +48,7 @@ export class GameLevel extends Scene {
         }
 
     }
-    render(time) {
+    render(time) {// render метод все отрисовывает
         if (this.game.control.startGame) {// игра не будет запускаться, пока переменная из класса control не будет true
             this.update(time);
             super.render(time);

@@ -4,7 +4,7 @@ export class AudioLoader {
         this.audio = {};
     }
     load() {
-        const promises = [];
+        const promises = [];// через [] берем или по ключу ил по названия ключа
         for (let name in this.audioFiles) {
             promises.push(this.loadAudio(name, this.audioFiles[name]));
         }

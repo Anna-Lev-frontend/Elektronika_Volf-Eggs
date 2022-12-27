@@ -1,6 +1,6 @@
 import { Sprite } from "./sprite";
 import { Animation } from "./animation";
-
+// это тетрадь спрайтов на случай если у нас будет спрайт с различным состоянием картинки (яйцо, волк)
 export class SpriteSheet {
     constructor({ imageName, imageWidth, imageHeight, spriteWidth = 108, spriteHeight = 108 }) {
         this.imageName = imageName;

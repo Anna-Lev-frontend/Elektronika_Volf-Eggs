@@ -1,4 +1,4 @@
-export class Sprite {
+export class Sprite {// после загрузки картинок вы все превращали в спрайты, чтобы мы могли упрпавлять ею и задавать позицию и параметры
     constructor({ imageName, sourceX, sourceY, width = 64, height = 64 }) {
         this.imageName = imageName;
         this.sourceX = sourceX;

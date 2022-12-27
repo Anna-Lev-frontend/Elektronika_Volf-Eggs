@@ -1,4 +1,4 @@
-export class ImageLoader {
+export class ImageLoader {// через это ткласс загружаем все наши картинки
     constructor(imageFiles) {
         this.imageFiles = imageFiles;
         this.images = {};
@@ -11,10 +11,10 @@ export class ImageLoader {
         }
         return Promise.all(promises);
     }
-    //делаем метод для загрузки одной картинки, которая будет возвращать promise
+    //делаем метод для загрузки одной картинки, которая будет возвращать promise()
     loadImage(name, src) {
 
-        return new Promise((resolve) => {
+        return new Promise((resolve) => { // прочитать промисы
             const image = new Image();
             this.images[name] = image;
             image.onload = ()=> resolve(name);

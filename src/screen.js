@@ -1,7 +1,7 @@
 import { ImageLoader } from './image-loader'
 import { AudioLoader } from './audio-loder';
 
-
+// этот метод создаем канвас, подгружает изображения, аудио, этот метод занимается рисованием на экране
 export class Screen {
     constructor(width, heigth) {
         this.width = width;
@@ -31,8 +31,8 @@ export class Screen {
         });
     }
     createCanvas(width, height) {// создаем канвас
-        let elements = document.getElementsByTagName('canvas');
-        let canvas = elements[0] || document.createElement('canvas');
+        let elements = document.getElementsByTagName('canvas');// берем первый canvas на страничке 
+        let canvas = elements[0] || document.createElement('canvas');// или берем новый canvas
         document.body.appendChild(canvas);
         canvas.width = width;
         canvas.height = height;

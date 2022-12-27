@@ -7,8 +7,7 @@ export class Scene {
     static get LOADED() { return 'LOADED'; }
     static get START_GAME() { return 'START_GAME'; }
     static get GAME_OVER() { return 'GAME_OVER'; }
-    static get GAME_WIN() { return 'GAME_WIN' ;}
-    static get FINISHED() { return 'FINISHED'; }
+   
 
     //запуск и перезапуск сцены, чтобы вернуть все параметры в первоначальное состояние, например поставить игрока на стартовую позицию
     init() {

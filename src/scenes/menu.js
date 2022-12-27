@@ -1,5 +1,5 @@
 import { Scene } from '../scene';
-
+// этот класс отвечает за отриcоdку игры после регистрации участника
 export class Menu extends Scene {
     constructor(game) {
         super(game);

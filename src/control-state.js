@@ -1,5 +1,5 @@
 import { Statistics } from "./scenes/statistics";
-
+//этот класс управляет всеми эвентами, кнопкам, стрелки
 export class ControlState {
     constructor(screen, game) {
         this.screen = screen;

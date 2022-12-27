@@ -17,8 +17,8 @@ export class Animation extends Sprite {
         this.currentFrame = 0;
         this.totalFrames = this.frames.length;
     }
-    //добавляем метод для установки текущего фрейма
-    setFrame(index) {// сюда подключаем звук
+    //добавляем метод для установки текущего фрейма(анимации)
+    setFrame(index) {
 
         this.currentFrame = index;
         this.sourceX = this.frames[index].sx;
@@ -28,7 +28,7 @@ export class Animation extends Sprite {
     }
     //добавляем методы для запуска и остановки анимации
     run() {
-        //временно прописыаем if
+       
         if(!this.running){
         this.setFrame(0);
         this.running = true;
@@ -41,7 +41,7 @@ export class Animation extends Sprite {
     
     nextFrame() {
        
-        if ((this.currentFrame + 1) == this.totalFrames) {
+        if ((this.currentFrame + 1) == this.totalFrames) {//current текущая анимация
           
             this.stop();
             return;
@@ -59,7 +59,7 @@ export class Animation extends Sprite {
         }
         if ((time - this.lastTime) > this.speed) {
             this.nextFrame();
-            this.lastTime = time //временно убираем += this.speed
+            this.lastTime = time 
         }
     }
     setPositionMap(map){

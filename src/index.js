@@ -2,9 +2,9 @@ import { Game } from "./game";// входная точка
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-//запускаем игру после загрузки документа
+//запускаем игру после загрузки документа, onload вызывается когда весь html прогрузилась и с ней можно работать
 window.onload = () => {
-    const firebaseConfig = {//конфигурация firebase
+    const firebaseConfig = {//конфигурация firebase(из документации), данные специализируются из моего приложения firebase
         apiKey: "AIzaSyD9JpIM1SXr3csWT8lFTz4oMwbTHqj2lo4",
         authDomain: "electronika-f5a48.firebaseapp.com",
         projectId: "electronika-f5a48",
@@ -12,11 +12,11 @@ window.onload = () => {
         messagingSenderId: "713424683706",
         appId: "1:713424683706:web:3e4ef7081fd1d195fb3883"
     };
-    const app = initializeApp(firebaseConfig);// запускаем приложение firebase
+    const app = initializeApp(firebaseConfig);// по факту это наш логин ждля поделючения к firebase
     const auth = getAuth();// авторизация firebase
 
-    const autorization = new Autorization(auth);
-    autorization.render();
+    const autorization = new Autorization(auth);// создаем инстант класса для регистрации пользователя в игре
+    autorization.render();// запускаем
 }
 
 class Autorization {
@@ -106,39 +106,9 @@ class Autorization {
         this.template = section;
     }
 
-    // _generateTemplate() {
-    //     this.template = document.createElement('section');
-    //     this.template.classList.add('registration');
-
-    //     const label = document.createElement('label');
-    //     label.classList.add('label');
-    //     label.innerText = 'Имя игрока';
-
-
-    //     const input = document.createElement('input');
-    //     input.classList.add('input')
-    //     label.append(input);
-
-    //     const btn = document.createElement('button');
-    //     btn.classList.add('btn');
-    //     btn.innerText = 'Далее';
-    //     btn.addEventListener('click', () => {
-    //         this.storage.setItem('name', input.value);
-    //         if (!localStorage.getItem('result')) {//забрать по ключу 
-    //             this.storage.setItem('result', JSON.stringify([]));//setItem получить по ключу
-    //         }
-
-    //         const electronika = new Game(1150, 700);
-    //         electronika.run();// запустили игру
-    //     })
-
-    //     this.template.append(label, btn);
-
-    // }
     render() {// публичный метод, т.к. работаем с ним в разных местах, вне класса
         document.body.append(this.template)
     }
 
 }
-console.log('Работает');
 
