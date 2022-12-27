@@ -1,6 +1,7 @@
-import { Game } from "./game";// входная точка
+import { Game } from "./src/game";// входная точка
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import './style.css';
 
 //запускаем игру после загрузки документа, onload вызывается когда весь html прогрузилась и с ней можно работать
 window.onload = () => {
